@@ -1,0 +1,34 @@
+=== lab7a1.py ===
+08:00:00 + 00:50:00 --> 08:50:00
+08:55:00 + 00:50:00 --> 09:45:00
+09:50:00 + 00:50:00 --> 10:40:00
+
+=== lab7c1.py ===
+08:00:00 + 00:50:00 --> 08:50:00
+08:55:00 + 00:50:00 --> 09:45:00
+09:50:00 + 1800 sec --> 10:20:00
+
+=== lab7i.py ===
+print() in main on schoolName: Seneca
+print() in function1 on schoolName: SICT
+print() in main on schoolName: SICT
+print() in function2 on schoolName: SSDO
+print() in main on schoolName: SSDO
+
+=== lab7d.py interactive verification ===
+t1.format_time(): '09:50:00'
+t1.valid_time(): True
+after change_time(1800): '10:20:00'
+sum_times(Time(1,0,0)): '11:20:00'
+
+=== lab7e.py interactive verification ===
+repr(t1): 09.50.00
+str(t1): 09:50:00
+
+=== lab7f.py interactive verification ===
+t1.sum_times(t2): 10.51.01
+t1 + t2: 10.51.01
+type(x): <class 'lab7f.Time'>
+print(x): 10:51:01
+
+Seneca UserID: jahmmed
