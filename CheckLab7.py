@@ -463,6 +463,31 @@ class lab7i(unittest.TestCase):
         self.assertEqual(stdout, expected_output, msg=error_output)
 
 
+class lab7h(unittest.TestCase):
+    """All test cases for lab7h - global scope"""
+
+    def test_0(self):
+        """[Lab 7] - [Investigation 3] - [Part 2] - Test for file creation: ./lab7h.py"""
+        error_output = 'file lab7h.py cannot be found(HINT: make sure you AND your file are in the correct directory)'
+        self.assertTrue(os.path.exists('./lab7h.py'), msg=error_output)
+
+    def test_a(self):
+        """[Lab 7] - [Investigation 3] - [Part 2] - Test for errors running: ./lab7h.py"""
+        p = subprocess.Popen([sys.executable, './lab7h.py'], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, err = p.communicate()
+        return_code = p.wait()
+        error_output = 'Your lab7h.py script exited with a error(HINT: make sure you copied the script exactly!)'
+        self.assertEqual(return_code, 0, msg=error_output)
+
+    def test_a1(self):
+        """[Lab 7] - [Investigation 3] - [Part 2] - Test for correct shebang line: ./lab7h.py"""
+        lab_file = open('./lab7h.py')
+        first_line = lab_file.readline()
+        lab_file.close()
+        error_output = 'your program does not have a shebang line(HINT: what should the first line contain)'
+        self.assertEqual(first_line.strip(), '#!/usr/bin/env python3', msg=error_output)
+
+
 def ChecksumLatest(url=None):
     dat = ''
     with urllib.request.urlopen(url) as response:
@@ -527,27 +552,3 @@ if __name__ == '__main__':
     if len(sys.argv) == 3:
        report_header = displayReportHeader()
     unittest.main()
-
-class lab7h(unittest.TestCase):
-    """All test cases for lab7h - global scope"""
-
-    def test_0(self):
-        """[Lab 7] - [Investigation 3] - [Part 2] - Test for file creation: ./lab7h.py"""
-        error_output = 'file lab7h.py cannot be found(HINT: make sure you AND your file are in the correct directory)'
-        self.assertTrue(os.path.exists('./lab7h.py'), msg=error_output)
-
-    def test_a(self):
-        """[Lab 7] - [Investigation 3] - [Part 2] - Test for errors running: ./lab7h.py"""
-        p = subprocess.Popen([sys.executable, './lab7h.py'], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, err = p.communicate()
-        return_code = p.wait()
-        error_output = 'Your lab7h.py script exited with a error(HINT: make sure you copied the script exactly!)'
-        self.assertEqual(return_code, 0, msg=error_output)
-
-    def test_a1(self):
-        """[Lab 7] - [Investigation 3] - [Part 2] - Test for correct shebang line: ./lab7h.py"""
-        lab_file = open('./lab7h.py')
-        first_line = lab_file.readline()
-        lab_file.close()
-        error_output = 'your program does not have a shebang line(HINT: what should the first line contain)'
-        self.assertEqual(first_line.strip(), '#!/usr/bin/env python3', msg=error_output)
