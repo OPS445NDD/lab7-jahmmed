@@ -433,6 +433,32 @@ class lab7f(unittest.TestCase):
         answer = '11:00:00'
         self.assertEqual(result, answer, msg=error_output)
 
+class lab7g(unittest.TestCase):
+    """All test cases for lab7g - local scope"""
+    
+    def test_0(self):
+        """[Lab 7] - [Investigation 3] - [Part 1] - Local Scope - Test for file creation: ./lab7g.py"""
+        error_output = 'file lab7g.py cannot be found(HINT: make sure you AND your file are in the correct directory)'
+        self.assertTrue(os.path.exists('./lab7g.py'), msg=error_output)
+
+    def test_b1_run(self):
+        """[Lab 7] - [Investigation 3] - [Part 1] - Local scope - Test for successful execution: ./lab7g.py"""
+        p = subprocess.Popen([sys.executable, './lab7g.py'], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, err = p.communicate()
+        return_code = p.wait()
+        error_output = 'your program exited with a error(HINT: make sure you script produce the exact output!)'
+        self.assertEqual(return_code, 0, msg=error_output)
+
+    def test_b2_run(self):
+        """[Lab 7] - [Investigation 3] - [Part 1] - Local scope - Test for correct output: ./lab7g.py"""
+        p = subprocess.Popen([sys.executable, './lab7g.py'], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, err = p.communicate()
+        return_code = p.wait()
+        expected_output = b'print() call in main on a: object_in_main\nprint() call in function1 on a: object_function1\nprint() call in main on a: object_in_main\nprint() call in function2 on a: function2_object\nprint() call in main on a: object_in_main\n'
+        error_output = 'output of your script does not match what is expected (HINT: make sure you script produce the exact output!)'
+        self.assertEqual(stdout, expected_output, msg=error_output)
+
+
 class lab7i(unittest.TestCase):
     """All test cases for lab7i - local and global scope"""
     
